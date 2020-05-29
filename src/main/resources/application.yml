@@ -1,0 +1,45 @@
+spring:
+  profiles:
+    active:
+    - local
+  security:
+    user:
+      name: chruser
+      password: chrpassword
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:h2:mem:chr_db
+    username: sa
+    password: 
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+    
+    
+logging:
+  file:
+    path: logs
+    
+server:
+  tomcat:
+    basedir: logs/tomcat/
+
+---
+
+spring:
+  profiles: lab
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://hostname:3306/chd_db?createDatabaseIfNotExist=true
+    username: chrdbuser
+    password: chrdbpassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  
